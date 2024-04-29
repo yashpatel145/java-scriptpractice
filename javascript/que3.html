@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bill Details</h1>
+  <div id="bill-results"></div>
+  <script>
+    // Test data
+const billValues = [275, 40, 430];
+
+// Calculate tip for a bill value
+function calculateTip(bill) {
+  let tip;
+  if (bill >= 50 && bill <= 300) {
+    tip = bill * 0.15;
+  } else {
+    tip = bill * 0.20;
+  }
+  return tip;
+}
+
+// HTML content with bill details
+function updateBillDetails(bill, tip, total) {
+  const billResultElement = document.getElementById("bill-results");
+  billResultElement.innerHTML += `
+    <p>Bill: $${bill}, Tip: $${tip}, Total: $${total}</p>
+  `;
+}
+
+// Test the function with all test data
+billValues.forEach(bill => {
+  const tip = calculateTip(bill);
+  const total = bill + tip;
+  updateBillDetails(bill, tip, total);
+});
+
+  </script>
+</body>
+</html>

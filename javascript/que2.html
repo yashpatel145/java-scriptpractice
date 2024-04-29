@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>BMI Comparison</h1>
+  <div id="result"></div>
+  
+  <script>
+    // Mark's and Johan's data
+    const marksD1 = {
+      weight: 78,
+      height: 1.69
+    }
+
+    const johansD1 = {
+      weight: 92,
+      height: 1.95
+    }
+
+    const marksD2 = {
+      weight: 95,
+      height: 1.88
+    }
+
+    const johansD2 = {
+      weight: 85,
+      height: 1.76
+    }
+
+    // Calculate BMI
+    function calcBMI(weight, height) {
+      return weight / (height ** 2);
+    }
+
+    // Calculate BMIs
+    const marksBMI1 = calcBMI(marksD1.weight, marksD1.height);
+    const johansBMI1 = calcBMI(johansD1.weight, johansD1.height);
+    const marksBMI2 = calcBMI(marksD2.weight, marksD2.height);
+    const johansBMI2 = calcBMI(johansD2.weight, johansD2.height);
+
+    // Compare BMIs for result result
+    function compareBMI(marksBMI, johansBMI) {
+      if (marksBMI > johansBMI) {
+        return `Mark BMI (${marksBMI}) is higher than Johan BMI (${johansBMI})!`; // Now we return the comparison message
+      } else {
+        return `Johan BMI (${johansBMI}) is higher than Mark BMI (${marksBMI})!`;
+      }
+    }
+
+    console.log("Comparing Data 1:");
+    const comparisonText1 = compareBMI(marksBMI1, johansBMI1); // Capture the returned value in a variable
+    console.log(comparisonText1);
+
+    console.log("\nComparing for Data 2:");
+    const comparisonText2 = compareBMI(marksBMI2, johansBMI2); // Capture the returned value in a variable
+    console.log(comparisonText2);
+
+    const resultDiv = document.getElementById("result");
+
+    // Function to display the comparison results
+    function displayResults() {
+      resultDiv.innerHTML = `<h2>Comparing Data 1:</h2><p>${comparisonText1}</p><h2>Comparing for Data 2:</h2><p>${comparisonText2}</p>`;
+    }
+    displayResults();
+  </script>
+</body>
+</html>

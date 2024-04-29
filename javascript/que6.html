@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Tip Calculator Results</h1>
+    <div id="output"></div>
+    <script>
+        function calcTip(bill) {
+  // Tip percentage based on bill amount
+  const tipPercentage = bill >= 50 && bill <= 300 ? 0.15 : 0.2;
+  return bill * tipPercentage;
+}
+
+// Create an array of bills
+const bills = [125, 555, 44];
+
+// Calculate tips and totals
+const tips = bills.map(bill => calcTip(bill));
+const totals = bills.map((bill, index) => bill + tips[index]);
+
+// Build the output string
+let outputString = "<h2>Bills\tTips\tTotals</h2>\n-------  -----  -------\n";
+for (let i = 0; i < bills.length; i++) {
+  outputString += `/n $${bills[i]}\t$${tips[i]}\t$${totals[i]}\n`;
+}
+
+// Access the output element and set its content
+const outputElement = document.getElementById("output");
+outputElement.textContent = outputString;
+
+    </script>
+    
+</body>
+</html>

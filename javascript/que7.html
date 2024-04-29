@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>BMI Comparison</h1>
+    <p id="result"></p>
+    <script>
+        class Person {
+  constructor(fullName, mass, height) {
+    this.fullName = fullName;
+    this.mass = mass;
+    this.height = height;
+    this.bmi = null;
+  }
+
+  calcBMI() {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
+  }
+}
+
+// make objects for Mark and John
+const mark = new Person("Mark Miller", 78, 1.69);
+const john = new Person("Johan Smith", 92, 1.95);
+
+// Calculate BMI 
+const markBMI = mark.calcBMI();
+const johnBMI = john.calcBMI();
+
+// who has the higher BMI
+const higherBMIPerson = markBMI > johnBMI ? mark : john;
+const lowerBMIPerson = markBMI > johnBMI ? john : mark;
+
+// Create the result message
+const resultMessage = `${higherBMIPerson.fullName}'s BMI (${higherBMIPerson.bmi.toFixed(1)}) is higher than ${lowerBMIPerson.fullName}'s BMI (${lowerBMIPerson.bmi.toFixed(1)})`;
+
+// Get the result element from the HTML
+const resultElement = document.getElementById("result");
+
+// Set the element's innerHTML to display the result
+resultElement.innerHTML = resultMessage;
+
+    </script>
+</body>
+</html>
